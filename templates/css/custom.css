@@ -1,0 +1,64 @@
+#intro{
+    background-image: url('../images/IMG_5836.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 100% 40%; 
+    padding-top: 20%;
+    padding-bottom: 20%;
+    color: #fefefe;
+}
+
+.jumbotron {
+    text-align: center;
+}
+
+
+#projects, #about, #contact{
+        background-color: rgba(229,229,229, 0.85);
+}
+
+.social_button {
+    color: #fefefe;
+    font-size: 40px;
+}
+
+
+/*type writer*/
+.line-1{
+    position: relative;
+    top: 50%;  
+    width: 5em;
+    margin: 0 auto;
+    border-right: 2px solid rgba(255,255,255,.75);
+    font-size: 500%;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);    
+}
+
+.anim-typewriter{
+  animation: typewriter 2s steps(15) 1s 1 normal both,
+  blinkTextCursor 500ms steps(15) infinite normal;
+}
+@keyframes typewriter{
+  from{width: 0;}
+  to{width: 4em;}
+}
+@keyframes blinkTextCursor{
+  from{border-right-color: rgba(255,255,255,.75);}
+  to{border-right-color: transparent;}
+}
+
+.parallax { 
+    /* The image used */
+    background-image: url("../images/night-sky.jpg");
+
+    /* Set a specific height */
+    height: 5000px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
