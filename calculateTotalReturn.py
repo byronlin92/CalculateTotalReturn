@@ -1,8 +1,8 @@
+from __future__ import print_function
 from lxml import html
 import requests
 from openpyxl import load_workbook
-
-
+import sys
 
 def get_stock_price(ticker):
     page = requests.get('https://ca.finance.yahoo.com/quote/' + ticker)
@@ -55,20 +55,46 @@ def calculate_total_return(excel_file):
             quantity = float(ws.cell(row, quantity_column).value)
             total_market_value += (stock_price * quantity)
 
-    print "market value: " + str(total_market_value)
-    print "book value: " + str(total_book_value)
-    print "dividends: " + str(total_dividends)
+    # print "market value: " + str(total_market_value)
+    # print "book value: " + str(total_book_value)
+    # print "dividends: " + str(total_dividends)
 
     total_return = str((total_market_value - total_book_value + total_dividends) / total_book_value)
+    print('total return is: ' + total_return, file=sys.stderr)
+    return total_return
+    # print "your total return is: " + total_return
 
-    print "your total return is: " + total_return
+def calculate_total_deposit(excel_file):
+    # variables
+    total_deposits = 0
+
+    activity_type_column = None
+    net_amount_column = None
+
+    wb = load_workbook(filename=excel_file)
+    # wb = load_workbook(filename="excel.xlsx")
+    ws = wb["Activities"]
+
+    #get columns of total purchase price, activity type
+    for col in range (1, ws.max_column):
+        if ws.cell(1,col).value == 'Activity Type':
+            activity_type_column = col
+        if ws.cell(1,col).value == 'Net Amount':
+            net_amount_column = col
+
+    for row in range (1, ws.max_row):
+        #get total deposits
+        if (ws.cell(row, activity_type_column).value == 'Deposits'):
+            total_deposits += float(ws.cell(row,net_amount_column).value)
+
+    total_deposits = str(total_deposits)
+    print('total deposits: ' + total_deposits, file=sys.stderr)
+    # print "total deposits: " + str(total_deposits)
+    return total_deposits
 
 
-
-
-
-calculate_total_return("excel.xlsx")
-
+# calculate_total_return("excel.xlsx")
+# calculate_total_deposit("excel.xlsx")
 
 
 
