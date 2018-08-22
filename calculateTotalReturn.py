@@ -4,6 +4,9 @@ import requests
 from openpyxl import load_workbook
 import sys
 
+
+
+
 def get_stock_price(ticker):
     page = requests.get('https://ca.finance.yahoo.com/quote/' + ticker)
     tree = html.fromstring(page.content)
@@ -59,7 +62,7 @@ def calculate_total_return(excel_file):
     # print "book value: " + str(total_book_value)
     # print "dividends: " + str(total_dividends)
 
-    total_return = str((total_market_value - total_book_value + total_dividends) / total_book_value)
+    total_return = str(((total_market_value - total_book_value + total_dividends) / total_book_value)*100)
     print('total return is: ' + total_return, file=sys.stderr)
     return total_return
     # print "your total return is: " + total_return

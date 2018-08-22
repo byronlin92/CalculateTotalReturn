@@ -14,6 +14,13 @@
 
 <body>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">Total return</h1>
@@ -25,7 +32,7 @@
   <div class="input-group mb-3">
       <div class="custom-file">
         <input type="file" name="file" class="custom-file-input" id="inputGroupFile02">
-        <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
+        <label class="custom-file-label" for="inputGroupFile02" id="file-upload-filename" aria-describedby="inputGroupFileAddon02">Choose file</label>
       </div>
 
     <div class="input-group-append">
@@ -35,12 +42,37 @@
 </form>
 
 {% if totalReturn %}
-<p>Your total return is: {{ totalReturn }}</p>
+<div class="alert alert-success" role="alert">Your total return is: {{ totalReturn }}</div>
 {% endif %}
 
 
-<!--{% if totalReturn %}-->
-<!--{% endif %}-->
+
+<!--for error messages-->
+{% for message in get_flashed_messages() %}
+  <div class="alert alert-warning" role="alert" class=flash> {{ message }}</div>
+
+{% endfor %}
+
+
+<script>
+// The following JS will set the file name in the choose file field box
+var input = document.getElementById( 'inputGroupFile02' );
+var infoArea = document.getElementById( 'file-upload-filename' );
+
+input.addEventListener( 'change', showFileName );
+
+function showFileName( event ) {
+  // the change event gives us the input it occurred in
+  var input = event.srcElement;
+
+  // the input has an array of files in the `files` property, each one has a name that you can use. We're just using the name here.
+  var fileName = input.files[0].name;
+
+  // use fileName however fits your app best, i.e. add it into a div
+  infoArea.textContent = 'File name: ' + fileName;
+}
+</script>
+
 
 <!-- jQuery and bootstrap -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
