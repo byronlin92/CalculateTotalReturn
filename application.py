@@ -1,12 +1,10 @@
-from flask import Flask, render_template, request, flash, redirect, session
+from flask import Flask, render_template, request, flash, redirect
 from calculateTotalReturn import calculate_total_return
 
 ALLOWED_EXTENSIONS = set(['xlsx'])
 
 app = Flask(__name__)
 app.secret_key = "super secret key"
-
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -38,10 +36,6 @@ def home(name=None):
             else:
                 return render_template('index.html', name=name, totalReturn=totalReturn)
 
-            # filename = secure_filename(file.filename)
-            # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            # return redirect(url_for('uploaded_file',
-            #                         filename=filename))
     return render_template('index.html', name=name, totalReturn=totalReturn)
 
 

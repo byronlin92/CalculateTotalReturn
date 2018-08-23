@@ -1,5 +1,4 @@
 from __future__ import print_function
-from flask import flash
 from lxml import html
 import requests
 from openpyxl import load_workbook

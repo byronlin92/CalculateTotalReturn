@@ -1,5 +1,5 @@
 lxml==4.2.4
 openpyxl==2.5.5
-requests==
+requests==2.19.1
 chardet==3.0.4
 requests=2.19.1
