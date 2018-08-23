@@ -1,4 +1,5 @@
 from __future__ import print_function
+from flask import flash
 from lxml import html
 import requests
 from openpyxl import load_workbook
@@ -28,7 +29,10 @@ def calculate_total_return(excel_file):
 
     wb = load_workbook(filename=excel_file)
     # wb = load_workbook(filename="excel.xlsx")
-    ws = wb["Activities"]
+    if ("Activities" in wb.sheetnames):
+        ws = wb["Activities"]
+    else:
+        return False
 
     #get columns of total purchase price, activity type
     for col in range (1, ws.max_column):
@@ -63,6 +67,7 @@ def calculate_total_return(excel_file):
     # print "dividends: " + str(total_dividends)
 
     total_return = str(((total_market_value - total_book_value + total_dividends) / total_book_value)*100)
+    total_return = total_return[:4] + "%"
     print('total return is: ' + total_return, file=sys.stderr)
     return total_return
     # print "your total return is: " + total_return

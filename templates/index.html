@@ -35,7 +35,7 @@
         <label class="custom-file-label" for="inputGroupFile02" id="file-upload-filename" aria-describedby="inputGroupFileAddon02">Choose file</label>
       </div>
 
-    <div class="input-group-append">
+    <div class="input-group-append" onclick="onClick()">
       <input type="submit" value="Upload" class="input-group-text" id="inputGroupFileAddon02">
     </div>
   </div>
@@ -46,12 +46,16 @@
 {% endif %}
 
 
-
 <!--for error messages-->
 {% for message in get_flashed_messages() %}
   <div class="alert alert-warning" role="alert" class=flash> {{ message }}</div>
 
 {% endfor %}
+
+
+<div class="alert alert-warning" role="alert" id="calculatingMessage" style="display:none;">Calculating</div>
+
+
 
 
 <script>
@@ -71,8 +75,11 @@ function showFileName( event ) {
   // use fileName however fits your app best, i.e. add it into a div
   infoArea.textContent = 'File name: ' + fileName;
 }
-</script>
 
+function onClick() {
+  document.getElementById('calculatingMessage').style.display = '';
+}
+</script>
 
 <!-- jQuery and bootstrap -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

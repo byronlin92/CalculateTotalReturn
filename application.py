@@ -33,7 +33,10 @@ def home(name=None):
             return redirect(request.url)
         if file and allowed_file(file.filename):
             totalReturn = calculate_total_return(file)
-            return render_template('index.html', name=name, totalReturn=totalReturn)
+            if (totalReturn == False):
+                flash('Invalid excel file, please try again')
+            else:
+                return render_template('index.html', name=name, totalReturn=totalReturn)
 
             # filename = secure_filename(file.filename)
             # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
