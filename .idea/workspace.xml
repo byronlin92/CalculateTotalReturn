@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="96d056af-575c-4a14-bbfa-64f389d9db87" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
-    </list>
+    <list default="true" id="96d056af-575c-4a14-bbfa-64f389d9db87" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +92,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="231" />
     <option name="y" value="23" />
     <option name="width" value="1688" />
@@ -220,7 +218,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="231" y="23" width="1688" height="1010" extended-state="0" />
+    <frame x="231" y="23" width="1688" height="1010" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.112559244" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
