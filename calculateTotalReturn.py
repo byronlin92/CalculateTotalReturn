@@ -4,6 +4,7 @@ import requests
 from openpyxl import load_workbook
 import sys
 
+from zipfile import BadZipfile
 
 
 
@@ -26,7 +27,12 @@ def calculate_total_return(excel_file):
     symbol_column = None
     quantity_column = None
 
-    wb = load_workbook(filename=excel_file)
+    try:
+        wb = load_workbook(filename=excel_file)
+    except BadZipfile:
+        return False
+
+    # wb = load_workbook(filename=excel_file)
     # wb = load_workbook(filename="excel.xlsx")
     if ("Activities" in wb.sheetnames):
         ws = wb["Activities"]
